@@ -4,6 +4,7 @@ public class CabRide {
 
     public static final int DISTANCE_COST = 10;
     public static final int WAIT_TIME_COST = 2;
+    public static final int MINIMUM_BASE_FARE = 40;
     private final int distance;
     private final int waitTime;
 
@@ -13,6 +14,7 @@ public class CabRide {
     }
 
     public int cost() {
-        return (distance * DISTANCE_COST) + (waitTime * WAIT_TIME_COST);
+        int fare = (distance * DISTANCE_COST) + (waitTime * WAIT_TIME_COST);
+        return Math.max(fare, MINIMUM_BASE_FARE);
     }
 }
