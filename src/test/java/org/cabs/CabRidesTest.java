@@ -37,4 +37,19 @@ public class CabRidesTest {
         CabRides cabRides = new CabRides();
         assertEquals(0, cabRides.averageCost());
     }
+
+    @Test
+    void shouldReturnInvoiceForTheRides() {
+        CabRide cabRide1 = new CabRide(4, 3); // 46
+        CabRide cabRide2 = new CabRide(5, 3); // 56
+
+        CabRides cabRides = new CabRides()
+                .add(cabRide1)
+                .add(cabRide2);
+
+        Invoice invoice = cabRides.invoice();
+        assertEquals(2, invoice.numberOfRides);
+        assertEquals(102, invoice.totalFare);
+        assertEquals(51, invoice.averageCost);
+    }
 }

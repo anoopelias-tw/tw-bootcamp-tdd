@@ -28,4 +28,15 @@ public class CabRides {
                 .average()
                 .orElse(0);
     }
+
+    private int totalCost() {
+        return cabRideList
+                .stream()
+                .mapToInt(CabRide::cost)
+                .sum();
+    }
+
+    public Invoice invoice() {
+        return new Invoice(cabRideList.size(), totalCost(), averageCost());
+    }
 }
